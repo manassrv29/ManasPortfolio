@@ -87,7 +87,7 @@ export function About() {
             About Me
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            Passionate Computer Science Engineering student with expertise in AI/ML, Mobile App Development, and full-stack solutions. Here's my journey of continuous learning and innovation.
+            Passionate Computer Science Engineering student with expertise in AI/ML, Mobile App Development, and full-stack solutions. Here&apos;s my journey of continuous learning and innovation.
           </p>
         </div>
 
@@ -232,7 +232,7 @@ export function About() {
         {/* Personal Quote */}
         <div className="mt-16 text-center">
           <div className="relative p-8 rounded-2xl bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800 border border-white/20 shadow-lg max-w-4xl mx-auto">
-            <div className="text-4xl text-blue-500 mb-4">"</div>
+            <div className="text-4xl text-blue-500 mb-4">&quot;</div>
             <p className="text-xl font-medium text-slate-700 dark:text-slate-300 italic mb-4">
               &quot;Technology is not just about solving problems; it&apos;s about creating possibilities that didn&apos;t exist before. Every line of code I write is a step towards building a smarter, more connected world.&quot;
             </p>
