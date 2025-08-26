@@ -7,7 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Linkedin, Github, Send, Code2 } from "lucide-react"
+import { Mail, Phone, MapPin, Linkedin, Github, Send, Code2, CheckCircle, AlertCircle } from "lucide-react"
+import emailjs from '@emailjs/browser'
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -17,10 +18,49 @@ export function Contact() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [statusMessage, setStatusMessage] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // EmailJS configuration - Replace these with your actual EmailJS credentials
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_portfolio'
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_contact'
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'manassrv29@gmail.com',
+        reply_to: formData.email,
+      }
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
+      setSubmitStatus('success')
+      setStatusMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.')
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error('EmailJS error:', error)
+      setSubmitStatus('error')
+      setStatusMessage('Sorry, there was an error sending your message. Please try again or contact me directly at manassrv29@gmail.com')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -155,6 +195,22 @@ export function Contact() {
               <CardTitle>Send a Message</CardTitle>
             </CardHeader>
             <CardContent>
+              {/* Status Message */}
+              {submitStatus !== 'idle' && (
+                <div className={`mb-6 p-4 rounded-lg flex items-center gap-3 ${
+                  submitStatus === 'success' 
+                    ? 'bg-green-50 text-green-800 border border-green-200' 
+                    : 'bg-red-50 text-red-800 border border-red-200'
+                }`}>
+                  {submitStatus === 'success' ? (
+                    <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                  ) : (
+                    <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                  )}
+                  <p className="text-sm">{statusMessage}</p>
+                </div>
+              )}
+              
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
@@ -196,9 +252,18 @@ export function Contact() {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full">
-                  <Send className="h-4 w-4 mr-2" />
-                  Send Message
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </form>
             </CardContent>
