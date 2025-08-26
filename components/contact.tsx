@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Phone, MapPin, Linkedin, Github, Send, Code2, CheckCircle, AlertCircle } from "lucide-react"
-import emailjs from '@emailjs/browser'
+// Removed EmailJS import - now using mailto links
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -18,49 +18,42 @@ export function Contact() {
     message: "",
   })
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  // Removed isSubmitting state - no longer needed
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [statusMessage, setStatusMessage] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
-
-    try {
-      // EmailJS configuration - Replace these with your actual EmailJS credentials
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_portfolio'
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_contact'
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
-
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        to_email: 'manassrv29@gmail.com',
-        reply_to: formData.email,
-      }
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey)
-      
-      setSubmitStatus('success')
-      setStatusMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.')
-      
-      // Reset form
+    
+    // Create mailto URL with form data
+    const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio')
+    const body = encodeURIComponent(
+      `Hi Manas,\n\n` +
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}\n\n` +
+      `Best regards,\n${formData.name}`
+    )
+    
+    const mailtoUrl = `mailto:manassrv29@gmail.com?subject=${subject}&body=${body}`
+    
+    // Open Gmail/default email client
+    window.open(mailtoUrl, '_blank')
+    
+    // Show success message
+    setSubmitStatus('success')
+    setStatusMessage('Opening your email client... Please send the pre-filled email to complete your message.')
+    
+    // Reset form after a delay
+    setTimeout(() => {
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
       })
-    } catch (error) {
-      console.error('EmailJS error:', error)
-      setSubmitStatus('error')
-      setStatusMessage('Sorry, there was an error sending your message. Please try again or contact me directly at manassrv29@gmail.com')
-    } finally {
-      setIsSubmitting(false)
-    }
+      setSubmitStatus('idle')
+    }, 3000)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -252,18 +245,9 @@ export function Contact() {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4 mr-2" />
-                      Send Message
-                    </>
-                  )}
+                <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white">
+                  <Send className="h-4 w-4 mr-2" />
+                  Open Gmail & Send
                 </Button>
               </form>
             </CardContent>
