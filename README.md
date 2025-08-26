@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Manas Srivastava - Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website built with **Next.js 15**, **Tailwind CSS v4**, and **TypeScript**. Features premium animations, glass morphism effects, and a sophisticated design system.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 🎨 **Premium Design System**
+- **Modern Blue Gradient Theme** with OKLCH color space
+- **Glass Morphism Effects** with backdrop blur and premium shadows
+- **Animated Mesh Backgrounds** with floating geometric patterns
+- **Professional Typography** with enhanced font rendering
+- **Responsive Design** optimized for all devices
+
+### 🎭 **Advanced Animations**
+- **Smooth Page Transitions** with custom easing functions
+- **Stagger Animations** for sequential element reveals
+- **Hover Micro-Interactions** with lift and glow effects
+- **Gradient Text Animations** with flowing color shifts
+- **Floating Elements** with gentle motion effects
+
+### 📱 **Interactive Components**
+- **Fixed Navigation** with smooth scrolling and active states
+- **Hero Section** with animated background and social links
+- **Experience Timeline** showcasing Amazon ML Summer School & IOCL internship
+- **Project Showcase** featuring AI/ML and full-stack projects
+- **Skills Matrix** organized by technology categories
+- **Contact Form** with professional styling
+
+### 🛠 **Technical Stack**
+- **Framework:** Next.js 15 with App Router
+- **Styling:** Tailwind CSS v4 with custom design tokens
+- **UI Components:** Radix UI with shadcn/ui
+- **Icons:** Lucide React
+- **Typography:** Geist Sans & Geist Mono fonts
+- **Animations:** Custom CSS keyframes and transitions
+
+## 🎯 **Key Highlights**
+
+- **2X Amazon ML Summer School Scholar** (2024 & 2025)
+- **Mobile App Developer at IOCL** - Biometric verification system
+- **AI/ML Projects** - SwaPehchaan, Knee Revive, WhatAMess
+- **450+ LeetCode Problems** solved
+- **Full-Stack Expertise** in React, Node.js, Python, and mobile development
+
+## 🚀 **Getting Started**
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/manassrv29/portfolio-website.git
+   cd portfolio-website
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 **Project Structure**
+
+```
+├── app/
+│   ├── globals.css          # Enhanced CSS with animations
+│   ├── layout.tsx           # Root layout with fonts
+│   └── page.tsx            # Main portfolio page
+├── components/
+│   ├── ui/                 # Reusable UI components
+│   ├── hero.tsx           # Hero section with intro
+│   ├── about.tsx          # About me section
+│   ├── experience.tsx     # Professional experience
+│   ├── projects.tsx       # Featured projects
+│   ├── skills.tsx         # Technical skills
+│   ├── contact.tsx        # Contact form
+│   └── navigation.tsx     # Fixed navigation
+├── lib/
+│   └── utils.ts           # Utility functions
+└── public/               # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 **Design Features**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Color System**
+- **Primary:** Blue gradient (#3B82F6 → #1E40AF → #1E3A8A)
+- **Secondary:** Light blue variations for accents
+- **Background:** Animated mesh gradients with geometric patterns
+- **Dark Mode:** Enhanced contrast with neon accents
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### **Animation System**
+- **Duration Variables:** Fast (0.15s), Normal (0.3s), Slow (0.5s)
+- **Easing Functions:** Custom cubic-bezier curves
+- **Keyframes:** 15+ custom animations for different effects
+- **Accessibility:** Respects `prefers-reduced-motion`
 
-## Learn More
+## 📱 **Responsive Design**
 
-To learn more about Next.js, take a look at the following resources:
+- **Mobile-First Approach** with progressive enhancement
+- **Breakpoints:** sm (640px), md (768px), lg (1024px), xl (1280px)
+- **Touch-Friendly** interactions and navigation
+- **Performance Optimized** with lazy loading and efficient animations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 **Deployment**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### **Vercel (Recommended)**
+```bash
+npm run build
+vercel --prod
+```
 
-## Deploy on Vercel
+### **Other Platforms**
+```bash
+npm run build
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 **Connect With Me**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **LinkedIn:** [Manas Srivastava](https://www.linkedin.com/in/manas-srivastava-a5561016b/)
+- **GitHub:** [manassrv29](https://github.com/manassrv29)
+- **LeetCode:** [manassrv29](https://leetcode.com/u/manassrv29/)
+- **Email:** manassrv29@gmail.com
+- **Phone:** +91-9829149265
+
+## 📄 **License**
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+**Built with ❤️ by Manas Srivastava** | Computer Science Engineering Student | AI/ML Enthusiast
