@@ -75,7 +75,7 @@ export function Contact() {
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss opportunities, collaborations and connect!
+            Let&apos;s discuss opportunities, collaborations and connect!
           </p>
         </div>
 
@@ -126,7 +126,7 @@ export function Contact() {
             <div className="bg-card rounded-lg p-6">
               <h3 className="font-semibold mb-3">Open to Opportunities</h3>
               <p className="text-muted-foreground text-sm">
-                I'm actively seeking internships, full-time opportunities, and collaborative projects in:
+                I&apos;m actively seeking internships, full-time opportunities, and collaborative projects in:
               </p>
               <ul className="mt-3 space-y-1 text-sm">
                 <li className="flex items-center gap-2">

@@ -54,7 +54,7 @@ export function About() {
           <h3 className="text-2xl font-bold mb-6 text-center">My Journey</h3>
           <div className="prose prose-lg max-w-none text-card-foreground">
             <p className="mb-4">
-              I'm a passionate Computer Science Engineering student at Graphic Era Deemed University with a strong focus
+              I&apos;m a passionate Computer Science Engineering student at Graphic Era Deemed University with a strong focus
               on artificial intelligence, machine learning, and full-stack development. My journey in technology has
               been marked by continuous learning and practical application of cutting-edge technologies.
             </p>
@@ -64,7 +64,7 @@ export function About() {
               Language Processing, Large Language Models, and Generative AI.
             </p>
             <p>
-              Through my internship at Indian Oil Corporation Limited and various projects, I've gained hands-on
+              Through my internship at Indian Oil Corporation Limited and various projects, I&apos;ve gained hands-on
               experience in developing enterprise-grade solutions, mobile applications, and AI-powered systems that
               solve real-world problems.
             </p>
