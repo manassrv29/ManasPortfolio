@@ -1,102 +1,178 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Code, Database, Smartphone, Brain, Cloud, Trophy } from "lucide-react"
+import { Code, Database, Smartphone, Brain, Cloud, Trophy, Zap, Target } from "lucide-react"
 
 export function Skills() {
   const skillCategories = [
     {
       title: "Programming Languages",
-      icon: <Code className="h-6 w-6" />,
+      icon: Code,
       skills: ["Java", "C++", "Python", "JavaScript", "TypeScript", "SQL"],
+      gradient: "from-blue-500 to-cyan-500",
+      bgGradient: "from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20"
     },
     {
       title: "Frontend & Mobile",
-      icon: <Smartphone className="h-6 w-6" />,
+      icon: Smartphone,
       skills: ["React.js", "React Native", "Next.js", "Tailwind CSS", "TypeScript", "CSS3"],
+      gradient: "from-purple-500 to-pink-500",
+      bgGradient: "from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20"
     },
     {
       title: "Backend & Database",
-      icon: <Database className="h-6 w-6" />,
+      icon: Database,
       skills: ["Node.js", "Flask", "MongoDB", "SQLite", "Firebase", "RESTful APIs"],
+      gradient: "from-green-500 to-emerald-500",
+      bgGradient: "from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20"
     },
     {
       title: "AI/ML & Data Science",
-      icon: <Brain className="h-6 w-6" />,
+      icon: Brain,
       skills: ["TensorFlow", "PyTorch", "Scikit-Learn", "NLP", "Computer Vision", "Hugging Face"],
+      gradient: "from-orange-500 to-red-500",
+      bgGradient: "from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20"
     },
     {
       title: "Cloud & DevOps",
-      icon: <Cloud className="h-6 w-6" />,
+      icon: Cloud,
       skills: ["Azure", "Vercel", "Git", "Docker", "Google Cloud", "AWS"],
+      gradient: "from-indigo-500 to-blue-500",
+      bgGradient: "from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20"
     },
     {
       title: "Tools & Design",
-      icon: <Trophy className="h-6 w-6" />,
+      icon: Trophy,
       skills: ["Android Studio", "Xcode", "Figma", "Tableau", "Google AI Studio", "Postman"],
+      gradient: "from-yellow-500 to-orange-500",
+      bgGradient: "from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20"
     },
   ]
 
   const achievements = [
-    "450+ Problems solved on LeetCode",
-    "2X Amazon ML Summer School Scholar",
-    "1st Runner-Up at Hack-Wave 2025",
-    "Finalist in Graphethon 2025 (800+ teams)",
-    "Core member of Grafest 2023-24",
+    { text: "450+ Problems solved on LeetCode", icon: Code },
+    { text: "2X Amazon ML Summer School Scholar", icon: Brain },
+    { text: "1st Runner-Up at Hack-Wave 2025", icon: Trophy },
+    { text: "Finalist in Graphethon 2025 (800+ teams)", icon: Target },
+    { text: "Core member of Grafest 2023-24", icon: Zap },
   ]
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Technical Skills</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-purple-50 to-pink-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(120,119,198,0.3),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(255,119,198,0.2),transparent_50%)]"></div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 mb-6">
+            <Zap className="h-5 w-5 text-purple-600" />
+            <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Technical Expertise</span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 via-purple-800 to-slate-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent">
+            Skills & Technologies
+          </h2>
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             Comprehensive expertise across full-stack development, AI/ML, and modern technologies
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {skillCategories.map((category, index) => (
-            /* Added staggered animations and hover effects to skill category cards */
-            <Card key={index} className={`h-full hover-lift animate-scale-in animation-delay-${(index + 1) * 200}`}>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg text-primary animate-pulse-gentle">{category.icon}</div>
-                  <CardTitle className="text-lg">{category.title}</CardTitle>
+        {/* Skills Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {skillCategories.map((category, index) => {
+            const IconComponent = category.icon;
+            return (
+              <div
+                key={index}
+                className={`group relative p-6 rounded-2xl bg-gradient-to-br ${category.bgGradient} border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105`}
+              >
+                {/* Icon and Title */}
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <IconComponent className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                    {category.title}
+                  </h3>
                 </div>
-              </CardHeader>
-              <CardContent>
+
+                {/* Skills */}
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, idx) => (
-                    /* Added hover scale animation to skill badges */
-                    <Badge key={idx} variant="secondary" className="text-xs hover-scale">
+                    <Badge
+                      key={idx}
+                      className="px-3 py-1 bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/50 dark:border-slate-600/50 hover:bg-white dark:hover:bg-slate-700 hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+                    >
                       {skill}
                     </Badge>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+
+                {/* Hover Glow Effect */}
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${category.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`}></div>
+              </div>
+            );
+          })}
         </div>
 
-        <Card className="animate-fade-in-up animation-delay-1000 hover-lift">
-          <CardHeader>
-            <CardTitle className="text-center">Coding & Leadership Achievements</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {achievements.map((achievement, index) => (
-                /* Added staggered slide-in animations to achievement items */
+        {/* Achievements Section */}
+        <div className="relative">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 mb-4">
+              <Trophy className="h-5 w-5 text-yellow-600" />
+              <span className="text-sm font-medium text-yellow-700 dark:text-yellow-300">Achievements & Recognition</span>
+            </div>
+            <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
+              Coding & Leadership Milestones
+            </h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {achievements.map((achievement, index) => {
+              const IconComponent = achievement.icon;
+              return (
                 <div
                   key={index}
-                  className={`flex items-center gap-3 p-3 bg-card rounded-lg hover-lift animate-slide-in-right animation-delay-${(index + 2) * 200}`}
+                  className="group relative p-6 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/20 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105"
                 >
-                  <Trophy className="h-5 w-5 text-primary flex-shrink-0 animate-bounce-gentle" />
-                  <span className="text-sm font-medium">{achievement}</span>
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                        {achievement.text}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="text-center p-6 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/20 shadow-lg">
+            <div className="text-3xl font-bold text-blue-600 mb-2">6+</div>
+            <div className="text-sm text-slate-600 dark:text-slate-400">Tech Stacks</div>
+          </div>
+          <div className="text-center p-6 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/20 shadow-lg">
+            <div className="text-3xl font-bold text-purple-600 mb-2">20+</div>
+            <div className="text-sm text-slate-600 dark:text-slate-400">Technologies</div>
+          </div>
+          <div className="text-center p-6 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/20 shadow-lg">
+            <div className="text-3xl font-bold text-green-600 mb-2">450+</div>
+            <div className="text-sm text-slate-600 dark:text-slate-400">Problems Solved</div>
+          </div>
+          <div className="text-center p-6 rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/20 shadow-lg">
+            <div className="text-3xl font-bold text-orange-600 mb-2">5+</div>
+            <div className="text-sm text-slate-600 dark:text-slate-400">Major Projects</div>
+          </div>
+        </div>
       </div>
     </section>
   )
