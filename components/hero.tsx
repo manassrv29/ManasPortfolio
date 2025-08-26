@@ -1,8 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Github, Linkedin, Mail, Phone, MapPin, Code2, Download, ArrowRight, Sparkles, Star } from "lucide-react"
+import { Github, Linkedin, Mail, Phone, MapPin, Code2, ArrowRight, Sparkles, Star } from "lucide-react"
 import { useState, useEffect } from "react"
 
 export function Hero() {

@@ -1,7 +1,7 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
-import { GraduationCap, Award, Target, Calendar, MapPin, Code, Brain, Rocket, Star, Trophy, BookOpen, Zap } from "lucide-react"
+import { GraduationCap, Target, Calendar, Code, Brain, Rocket, Star, Trophy, BookOpen, Zap } from "lucide-react"
 import { useState, useEffect } from "react"
 
 export function About() {
@@ -234,7 +234,7 @@ export function About() {
           <div className="relative p-8 rounded-2xl bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800 border border-white/20 shadow-lg max-w-4xl mx-auto">
             <div className="text-4xl text-blue-500 mb-4">"</div>
             <p className="text-xl font-medium text-slate-700 dark:text-slate-300 italic mb-4">
-              Technology is not just about solving problems; it's about creating possibilities that didn't exist before. Every line of code I write is a step towards building a smarter, more connected world.
+              &quot;Technology is not just about solving problems; it&apos;s about creating possibilities that didn&apos;t exist before. Every line of code I write is a step towards building a smarter, more connected world.&quot;
             </p>
             <div className="flex items-center justify-center gap-2">
               <div className="w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"></div>
